@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
@@ -11,8 +11,10 @@ import Card from '../components/Card';
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
 
+
+
 export const getStaticProps = async () => {
-  const res = await fetch('https://maximum.expert/api/stock-test?brand=Hyundai');
+  const res = await fetch(`https://maximum.expert/api/stock-test?brand=Hyundai`);
   const cars = await res.json();
 
   return {
@@ -25,6 +27,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ cars }) {
   const auto = ["Audi", "Mitsubishi", "Volkswagen", "Kia", "Honda", "Hyundai"];
+  let brand = auto[3];
 
   return (
     <>
@@ -37,7 +40,7 @@ export default function Home({ cars }) {
       <main className={`${styles.main} ${roboto.className}`}>
         <div className={styles.flterPanel}>
           <select className={styles.filterPanel} name="city" id="city-select">
-            <option value="">Марка</option>
+            <option value="" >Марка</option>
             {auto.map((item) => {
               return <option key={item} value={item}>{item}</option>
             })}
@@ -46,7 +49,7 @@ export default function Home({ cars }) {
 
         <ul className={styles.cards}>
           {cars.list.map((item) => {
-            return <Card carCard={item} key={item._id}/>
+            return <Card carCard={item} key={item._id} />
           })}
         </ul>
       </main>

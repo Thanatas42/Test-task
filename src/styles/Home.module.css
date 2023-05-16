@@ -68,19 +68,25 @@
   color: #303030;
   padding: 26px;
   box-shadow: 0px 6px 32px #0E2A6029;
-  font-family: 'Roboto_Condensed', Arial, sans-serif;
+  font-family: 'Roboto Condensed', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
+  text-align: left;
+  border-radius: 8px;
 }
 
-.card h2 {
-  font-family: 'Roboto_Condensed', Arial, sans-serif;
-  font-size: 15px;
+.cardNameContainer {
+  display: flex;
+}
+
+.cardNameContainer h2 {
+  font-size: 16px;
+  font-weight: normal;
   line-height: 28px;
-  padding: 8px 0 6px;
+  padding: 9px 0 0;
 }
 
-.card span {
+.cardNameContainer span {
   font-size: 12px;
   line-height: 28px;
   letter-spacing: 0px;
@@ -90,39 +96,52 @@
 }
 
 .vinNumber {
-  padding: 0 0 8px;
+  font-family: 'Roboto Regular', Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  padding: 4px 0 20px;
   font-size: 10px;
   line-height: 13px;
   letter-spacing: 1px;
   color: #707B8C;
 }
 
-.carousels {
-  padding: 10px 0;
-  height: 198px;
-}
-
 .card img {
   width: 264px;
   border-radius: 4px;
-}
-
-.card div {
-  display: flex;
-}
-
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-  font: normal normal normal 10px/13px Roboto;
+  object-fit: cover;
+  height: 198px;
 }
 
 .options {
+  font-family: 'Roboto Regular', Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  flex-shrink: 2;
+  padding: 28px 0 0;
+  list-style-type: none;
+}
+
+.options span {
+  color: #22BF86;
+}
+
+.options li {
+  padding-bottom: 19px
+}
+
+.options h5 {
+  letter-spacing: 1px;
+  font-size: 10px;
+  color: #ACB8BF;
+  text-transform: uppercase;
+  padding-bottom: 7px
+}
+
+.options p {
+  font-size: 14px;
+  color: #303030;
 }
 
 .center {
@@ -159,6 +178,7 @@
 .logo {
   position: relative;
 }
+
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
