@@ -18,7 +18,10 @@ export default function Card(props) {
                 <img src={props.carCard.photobank.imgs[2].urlThumb} />
                 {feedData.vin}
                 */
-    console.log(feedData.baseOptions[0])
+
+    function transformFirstChar(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     return (
         <li className={styles.card}>
@@ -39,11 +42,11 @@ export default function Card(props) {
                 <ul className={styles.options}>
                     <li>
                         <h5>Двигатель</h5>
-                        <p>{`${feedData.engine.engineCapacity} л`} <span>/</span> {`${feedData.equipmentVariantEnginePower} лс `} <span>/</span> {`${feedData.equipmentVariantFuelType.toLowerCase()}`}</p>
+                        <p>{`${feedData.engine.engineCapacity} л`} <span>/</span> {`${feedData.equipmentVariantEnginePower} лс `} <span>/</span> {`${transformFirstChar(feedData.equipmentVariantFuelType.toLowerCase())}`}</p>
                     </li>
                     <li>
-                        <h5>КПП</h5>
-                        <p>{feedData.equipmentVariantTransmissionType}</p>
+                        <h5>кпп / ПРИВОД</h5>
+                        <p>{`${feedData.equipmentVariantTransmission} / ${feedData.equipmentVariantDriveType}`}</p>
                     </li>
                     <li>
                         <h5>Пробег</h5>
@@ -51,7 +54,7 @@ export default function Card(props) {
                     </li>
                     <li>
                         <h5>Цвет</h5>
-                        <p>{feedData.colorByClassifierName}</p>
+                        <p>{transformFirstChar(feedData.colorByClassifierName)}</p>
                     </li>
                     <li>
                         <h5>Пакеты</h5>
@@ -60,10 +63,10 @@ export default function Card(props) {
                 </ul>
                 <div className={styles.priceContainer}>
                     <div>
-                        <p>{feedData.autoPrice.toLocaleString() + " ₽"}</p>
-                        <p>{`Доп. опции на ${feedData.price.toLocaleString()} ₽`}</p>
+                        <p>{feedData.autoPriceSummary.toLocaleString()}<span>&nbsp;₽</span></p>
+                        <p className={styles.advancePrice}>{"Доп. опции на"}<span style={{ color: "#22BF86" }}>&nbsp;{feedData.price.toLocaleString()}&nbsp;</span>{" ₽"}</p>
                     </div>
-                    <button>{props.carCard.serviceData.status}</button>
+                    <button >{props.carCard.serviceData.status}</button>
                 </div>
             </div>
         </li>

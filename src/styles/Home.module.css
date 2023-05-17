@@ -67,7 +67,7 @@
   width: 404px;
   color: #303030;
   padding: 26px;
-  box-shadow: 0px 6px 32px #0E2A6029;
+  box-shadow: 0px 6px 32px #ECEEF2;
   font-family: 'Roboto Condensed', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -116,9 +116,8 @@
 .options {
   font-family: 'Roboto Regular', Arial, sans-serif;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  flex-shrink: 2;
   padding: 28px 0 0;
   list-style-type: none;
 }
@@ -128,7 +127,8 @@
 }
 
 .options li {
-  padding-bottom: 19px
+  padding-bottom: 19px;
+  min-width: 50%;
 }
 
 .options h5 {
@@ -142,6 +142,63 @@
 .options p {
   font-size: 14px;
   color: #303030;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Roboto Regular', Arial, sans-serif;
+  font-size: 28px;
+  line-height: 28px;
+  color: #22BF86;
+}
+
+.priceContainer span {
+  color: #303030;
+}
+
+.priceContainer div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
+.priceContainer p {
+  padding: 5px;
+  display: block;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+}
+
+.advancePrice {
+  font-family: 'Roboto Regular', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 32px;
+  color: #303030;
+}
+
+.priceContainer button {
+  max-width: 145px;
+  width: 100%;
+  height: 48px;
+  background: transparent linear-gradient(252deg, #38EF7D 0%, #11998E 100%) 0% 0% no-repeat padding-box;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Roboto Medium', Arial, sans-serif;
+  font-size: 10px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.priceContainer button:hover {
+  cursor: pointer;
+  opacity: .7;
+  transition: all .3s;
 }
 
 .center {
@@ -183,12 +240,10 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
+    box-shadow: 0px 6px 32px #aaadb3;
+    transform: scale(1.02);
+    transition: transform .15s linear, box-shadow .15s linear;
+    outline: 1px solid rgba(var(--card-border-rgb), .3);
   }
 }
 

@@ -8,13 +8,10 @@ import styles from '@/styles/Home.module.css'
 
 import Card from '../components/Card';
 
-const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
 
-
-
 export const getStaticProps = async () => {
-  const res = await fetch(`https://maximum.expert/api/stock-test?brand=Hyundai`);
+  const res = await fetch(`https://maximum.expert/api/stock-test?brand=Kia`);
   const cars = await res.json();
 
   return {
