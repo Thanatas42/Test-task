@@ -1,27 +1,20 @@
 import React from "react";
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Home.module.scss'
 
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Card(props) {
-
     let feedData = props.carCard.feedData;
-    //{`${feedData.brandName} ${feedData.modelName} ${feedData.equipmentVariantName}`}
-    //{feedData.modelYear}
-
-    /* {props.carCard.photobank.imgs.map((item) => {
-                    return <img src={item.urlThumb} key={item._id} alt={item.season} />
-                })}
-                
-                <img src={props.carCard.photobank.imgs[2].urlThumb} />
-                {feedData.vin}
-                */
 
     function transformFirstChar(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        if (string)
+            return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+    let status = props.carCard.serviceData.status === "В продаже" ? true : false;
+
 
     return (
         <li className={styles.card}>
@@ -58,7 +51,7 @@ export default function Card(props) {
                     </li>
                     <li>
                         <h5>Пакеты</h5>
-                        <p>{`${feedData.baseOptions[0].universalOptions.name} (+ ещё ${feedData.baseOptions.length} пакета)`}</p>
+                        <p>{`${''} (+ ещё ${feedData.baseOptions.length} пакета)`}</p>
                     </li>
                 </ul>
                 <div className={styles.priceContainer}>
@@ -66,7 +59,7 @@ export default function Card(props) {
                         <p>{feedData.autoPriceSummary.toLocaleString()}<span>&nbsp;₽</span></p>
                         <p className={styles.advancePrice}>{"Доп. опции на"}<span style={{ color: "#22BF86" }}>&nbsp;{feedData.price.toLocaleString()}&nbsp;</span>{" ₽"}</p>
                     </div>
-                    <button >{props.carCard.serviceData.status}</button>
+                    <button disabled={!status}>{status ? 'купить' : 'в поставке'}</button>
                 </div>
             </div>
         </li>
