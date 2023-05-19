@@ -14,15 +14,16 @@ export default function Card(props) {
     }
 
     let status = props.carCard.serviceData.status === "В продаже" ? true : false;
+    let packet = "Basic, Classic";
 
 
     return (
         <li className={styles.card}>
             <div className={styles.cardNameContainer}>
-                <h2>{`${feedData.brandName} ${feedData.modelName} ${feedData.equipmentName} ${feedData.engine.engineCapacity} ${feedData.engine.engineTransmission}`}</h2>
+                <h2>{`${feedData.brandName} ${feedData.modelName} ${feedData.equipmentVariantName} `}</h2>
                 <span>{feedData.modelYear}</span>
             </div>
-            <h5 className={styles.vinNumber}>{feedData.vin}</h5>
+            <p className={styles.vinNumber}>{feedData.vin}</p>
             <Swiper
                 spaceBetween={7}
                 slidesPerView={1.3}
@@ -35,7 +36,8 @@ export default function Card(props) {
                 <ul className={styles.options}>
                     <li>
                         <h5>Двигатель</h5>
-                        <p>{`${feedData.engine.engineCapacity} л`} <span>/</span> {`${feedData.equipmentVariantEnginePower} лс `} <span>/</span> {`${transformFirstChar(feedData.equipmentVariantFuelType.toLowerCase())}`}</p>
+                        <p>{`${feedData.engine.engineCapacity} л`} <span>/</span> {`${feedData.equipmentVariantEnginePower} лс `}
+                            <span>/</span> {`${transformFirstChar(feedData.equipmentVariantFuelType.toLowerCase())}`}</p>
                     </li>
                     <li>
                         <h5>кпп / ПРИВОД</h5>
@@ -51,7 +53,7 @@ export default function Card(props) {
                     </li>
                     <li>
                         <h5>Пакеты</h5>
-                        <p>{`${''} (+ ещё ${feedData.baseOptions.length} пакета)`}</p>
+                        <p>{`${/*проперть пакетов?*/packet}`}<span className={styles.optionsSpan}>{` (+ ещё ${feedData.baseOptions.length} пакета)`}</span></p>
                     </li>
                 </ul>
                 <div className={styles.priceContainer}>
