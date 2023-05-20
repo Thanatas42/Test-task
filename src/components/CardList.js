@@ -5,8 +5,6 @@ import Card from '../components/Card';
 
 export default function CardList(props) {
 
-
-
     return (
         <ul className={styles.cards}>
             {props.carsList.map((item, index) => {

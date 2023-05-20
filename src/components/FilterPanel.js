@@ -13,7 +13,7 @@ export default function FilterPanel(props) {
         let array = filter.size > 0 ? Array.from(filter) : props.config.auto;
         let results = [];
         for (let i = 0; i < array.length; i++) {
-            fetch(`${props.api}?brand=${array[i]}`)
+            fetch(`${props.config.api}?brand=${array[i]}`)
                 .then((res) => res.json())
                 .then((data) => {
                     results = results.concat(data.list);

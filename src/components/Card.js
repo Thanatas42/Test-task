@@ -53,7 +53,7 @@ export default function Card(props) {
                     </li>
                     <li>
                         <h5>Пакеты</h5>
-                        <p>{`${/*проперть пакетов?*/packet}`}<span className={styles.optionsSpan}>{` (+ ещё ${feedData.baseOptions.length} пакета)`}</span></p>
+                        <p>{`${packet}`}<span className={styles.optionsSpan}>{` (+ ещё ${feedData.baseOptions.length} пакета)`}</span></p>
                     </li>
                 </ul>
                 <div className={styles.priceContainer}>
