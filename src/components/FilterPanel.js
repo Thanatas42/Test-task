@@ -29,6 +29,7 @@ export default function FilterPanel(props) {
 
     async function handleChangeSubmit(e) {
         e.preventDefault();
+        SetFilterActive(!filterActive);
 
         let array = filter.size > 0 ? Array.from(filter) : props.config.auto;
 
