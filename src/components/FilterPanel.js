@@ -4,7 +4,7 @@ import styles from '@/styles/Home.module.scss'
 export default function FilterPanel(props) {
     const [filterActive, SetFilterActive] = React.useState(false);
     const [filter, SetFilter] = React.useState(new Set());
-    const [showFilterResult, SetShowFilterResult] = React.useState(0);
+    const [showFilterResult, SetShowFilterResult] = React.useState('...');
 
     async function getDataApi(carBrandsArr, count = false) {
         let results = [];
@@ -43,22 +43,20 @@ export default function FilterPanel(props) {
     }
 
     async function handleChangeFilter(e) {
-        let checkArray = [];
         SetShowFilterResult('...');
+        let checkArray = [];
 
         document.getElementsByName('filterInputCheckbox').forEach(c => {
-            if (e.target.checked) {
-                c.checked ? document.getElementById(`button${c.id}`).classList.add(styles.hidden) : '';
-            } else {
+            c.checked ? document.getElementById(`button${c.id}`).classList.add(styles.hidden) : '';
+            if (!e.target.checked)
                 c.checked ? checkArray.push(c) : '';
-            }
         });
 
         if (e.target.checked) {
             document.getElementById(`button${e.target.id}`).classList.remove(styles.hidden)
         } else {
-            checkArray.length > 0 ? document.getElementById(`button${checkArray.at(-1).id}`).classList.remove(styles.hidden) : '';
             document.getElementById(`button${e.target.id}`).classList.add(styles.hidden)
+            checkArray.length > 0 ? document.getElementById(`button${checkArray.at(-1).id}`).classList.remove(styles.hidden) : '';
         };
 
         filter.has(e.target.value) ?
@@ -66,9 +64,8 @@ export default function FilterPanel(props) {
         SetFilter(filter);
 
         let array = Array.from(filter);
-        let count = array.length === 0 ? props.cars.length : await getDataApi(array, true);
 
-        SetShowFilterResult(count);
+        SetShowFilterResult(array.length === 0 ? props.cars.length : await getDataApi(array, true));
     }
 
 
