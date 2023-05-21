@@ -14,7 +14,7 @@ const cardsInPage = {
     "screenSize480": 11
 }
 
-let config = {
+const config = {
     auto,
     api,
     cardsInPage
